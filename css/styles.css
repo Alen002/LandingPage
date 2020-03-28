@@ -133,7 +133,7 @@ section:nth-of-type(even) .landing__container {
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
-/* section:nth-of-type(odd) .landing__container::before {
+section:nth-of-type(odd) .landing__container::before {
     content: '';
     background: rgba(255, 255, 255, 0.187);
     position: absolute;
@@ -188,15 +188,16 @@ section:nth-of-type(3n + 1) .landing__container::after {
     border-radius: 50%;
     opacity: 0;
     transition: ease 0.5s all;
-} */
+}
 
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-/* section.your-active-class {
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to 
+what you set in your javascript file.  */
+section.your-active-class {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%); 
 }
 
 section.your-active-class .landing__container::before {
@@ -207,7 +208,10 @@ section.your-active-class .landing__container::before {
 section.your-active-class .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
-} */
+}
+
+
+
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
@@ -222,13 +226,4 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
-
-
-
-
-
-
-/* .your-active-class {
-    background-color: red;
-} */
 

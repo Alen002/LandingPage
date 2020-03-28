@@ -75,9 +75,6 @@ section.forEach((value) => {
  * Highlight dynamically sections
  */
 
-/* Add and remove the class "your-active-class"  */
-/* document.querySelectorAll('section')[0].classList.remove('your-active-class') */
-
 /** 
  * Check the coordinates of the section in the viewport with the method .getBoundingClientRect() 
  * Retrieve the actual y coordinates of a section element via the scroll event 
@@ -85,14 +82,29 @@ section.forEach((value) => {
 
 window.addEventListener('scroll', () => {
     section.forEach ((value, index) => {
+        
         let coordinates = document.querySelectorAll('section')[index].getBoundingClientRect();
         console.log(section[index].id + " " + coordinates.y);
+        console.log(section[index].id + " " + coordinates.bottom);
+        console.log(window.innerHeight);
+        console.log(coordinates.bottom - coordinates.y);  
+        
+        let height = coordinates.bottom - coordinates.y
 
-        if (coordinates.y < 10) {
-            /* console.log(section[index].id + " " + coordinates.y); */
-            document.querySelectorAll('section')[index].style.backgroundColor = 'red';
-        } 
-    });
+        if (coordinates.y > -(height/4) && coordinates.bottom < window.innerHeight + (height/4)) {
+            document.querySelectorAll('section')[index].classList.add('your-active-class');
+        } else {
+            document.querySelectorAll('section')[index].classList.remove('your-active-class')
+        }
+
+
+        /* if (coordinates.y < 200 && coordinates.bottom >200) {
+            document.querySelectorAll('section')[index].classList.add('your-active-class');
+        } else if (coordinates.y > window.innerHeight + window.innerHeight*0.2) {
+            document.querySelectorAll('section')[index].classList.remove('your-active-class')
+        }  */
+    }); 
+    
 });
 
 
