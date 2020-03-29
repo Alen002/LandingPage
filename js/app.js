@@ -55,29 +55,32 @@
 
 
 /**
- * Adds dynamically sections to the navigation bar
- * 
- * 
+ * Purpose: Adds sections dynamically to the navigation bar
+ * Create navbarItems from sections with the method createElement()
+ * Add navbarItems to the navbar__list node with the method appendChild()
+ * Use dataset for retrieving the data attributes of data-nav of each section with dataset.nav and add it to the navbarItems with innerHTML
+ * Usage for navigation menu: createElement(), appendChild(), innerHTML, dataset for retrieving data attributes
  */
 const section = document.querySelectorAll('section');
-
 
 section.forEach((value) => {    
     const navbarItems = document.createElement('li');
     document.querySelector('#navbar__list').appendChild(navbarItems).innerHTML = value.dataset.nav;
 
-
-
     console.log(value.dataset.nav)
 })
 
 /**
- * Highlight dynamically sections
+ * Purpose: Highlight dynamically sections
  */
 
 /** 
- * Check the coordinates of the section in the viewport with the method .getBoundingClientRect() 
- * Retrieve the actual y coordinates of a section element via the scroll event 
+ * Check the coordinates of the section in the viewport with the method .getBoundingClientRect() for each section 
+ * Retrieve the actual y and bottom coordinates of every section element via the scroll event listener
+ * Calculate the actual height of each section with the formula height = coordinates.bottom - coordinates.y
+ * If coordinates of an section reach an upper or lower viewport area then execute the classList method and add/remove the class 'your-active-class'
+ * console.log is included to monitor the coordinates for each section
+ * Usage for viewport functionality: getBoundingClientRect(),y, bottom, window.innerHeight
  */
 
 window.addEventListener('scroll', () => {
@@ -96,13 +99,6 @@ window.addEventListener('scroll', () => {
         } else {
             document.querySelectorAll('section')[index].classList.remove('your-active-class')
         }
-
-
-        /* if (coordinates.y < 200 && coordinates.bottom >200) {
-            document.querySelectorAll('section')[index].classList.add('your-active-class');
-        } else if (coordinates.y > window.innerHeight + window.innerHeight*0.2) {
-            document.querySelectorAll('section')[index].classList.remove('your-active-class')
-        }  */
     }); 
     
 });
