@@ -53,7 +53,7 @@ section.forEach(createNavbar);
  * console.log is included to monitor the coordinates of each section
  */
 
-let focusSection = (index) => {
+let focusSection = (value, index) => {
         
     let coordinates = document.querySelectorAll('section')[index].getBoundingClientRect();
     let height = coordinates.bottom - coordinates.y
